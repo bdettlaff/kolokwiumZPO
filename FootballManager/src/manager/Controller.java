@@ -29,12 +29,11 @@ public class Controller {
         public void run() {
             Platform.runLater(() -> {
                 beginMatch();
-                endMatch();
             });
 
             timer++;
 
-            if(timer==90){
+            if(timer==105){
                 logger.info("Match end");
                 timerNew.cancel();
                 timerNew.purge();
@@ -60,19 +59,16 @@ public class Controller {
         start();
     }
 
-    private void endMatch() {
-
-                   /* logger.info(timer + "| Ukończył: " + randomCyclist.getListOfCyclist().get(indexOfFoundCyclist).getName() +
-                    "| Czas przejazdu " + randomCyclist.getListOfCyclist().get(indexOfFoundCyclist).getEndingTime()+ "\n");
-                    numberOfFinishingCyclists++;*/
-
-    }
-
     private void beginMatch() {
         timerObject = timer;
         if(timerObject < 10){
             mainTimer.setText("0"+timerObject.toString()+":00");
-        }else{
+        }else if(timerObject>45 && timerObject<60){
+            mainTimer.setText("PRZERWA");
+        }else if(timerObject <= 45 && timerObject >= 10){
+            mainTimer.setText(timerObject.toString()+":00");
+        }else {
+            timerObject=timerObject-15;
             mainTimer.setText(timerObject.toString()+":00");
         }
     }
