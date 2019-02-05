@@ -32,10 +32,10 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="75.0" layoutY="218.0" prefHeight="17.0" prefWidth="238.0" text="-" />
-      <Label layoutX="72.0" layoutY="244.0" prefHeight="17.0" prefWidth="238.0" text="-" />
-      <Label layoutX="72.0" layoutY="270.0" prefHeight="17.0" prefWidth="238.0" text="-" />
-      <Label layoutX="72.0" layoutY="297.0" prefHeight="17.0" prefWidth="238.0" text="-" />
-      <Label layoutX="72.0" layoutY="325.0" prefHeight="17.0" prefWidth="238.0" text="-" />
+      <Label fx:id="labelContentOne" layoutX="75.0" layoutY="218.0" prefHeight="17.0" prefWidth="238.0" text="-" />
+      <Label fx:id="labelContentTwo" layoutX="72.0" layoutY="244.0" prefHeight="17.0" prefWidth="238.0" text="-" />
+      <Label fx:id="labelContentThree" layoutX="72.0" layoutY="270.0" prefHeight="17.0" prefWidth="238.0" text="-" />
+      <Label fx:id="labelContentFour" layoutX="72.0" layoutY="297.0" prefHeight="17.0" prefWidth="238.0" text="-" />
+      <Label fx:id="labelContentFive" layoutX="72.0" layoutY="325.0" prefHeight="17.0" prefWidth="238.0" text="-" />
    </children>
 </AnchorPane>

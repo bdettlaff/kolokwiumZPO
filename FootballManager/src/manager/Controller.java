@@ -14,14 +14,26 @@ import java.util.logging.SimpleFormatter;
 
 public class Controller {
     static int timer=0;
-    public Logger logger = Logger.getLogger("CyclistLogs");
+    public Logger logger = Logger.getLogger("ManagerLogs");
     public FileHandler fileHandler;
 
     @FXML
     Label mainTimer;
     @FXML
     Button startRaceButton;
+    @FXML
+    Label labelContentOne;
+    @FXML
+    Label labelContentTwo;
+    @FXML
+    Label labelContentThree;
+    @FXML
+    Label labelContentFour;
+    @FXML
+    Label labelContentFive;
 
+    RandomEvent randomEvent = new RandomEvent();
+    Boolean isPause = false;
     Integer timerObject;
     Timer timerNew = new Timer();
     TimerTask task = new TimerTask() {
@@ -29,6 +41,7 @@ public class Controller {
         public void run() {
             Platform.runLater(() -> {
                 beginMatch();
+                editContent();
             });
 
             timer++;
@@ -40,6 +53,9 @@ public class Controller {
             }
         }
     };
+
+    public Controller() throws IOException {
+    }
 
     public void startMatch() throws IOException {
         startRaceButton.setDisable(true);
@@ -63,19 +79,41 @@ public class Controller {
         timerObject = timer;
         if(timerObject < 10){
             mainTimer.setText("0"+timerObject.toString()+":00");
+            isPause = false;
         }else if(timerObject>45 && timerObject<60){
             mainTimer.setText("PRZERWA");
+            isPause = true;
         }else if(timerObject <= 45 && timerObject >= 10){
             mainTimer.setText(timerObject.toString()+":00");
+            isPause = false;
         }else {
-            timerObject=timerObject-15;
+            timerObject = timer - 15;
             mainTimer.setText(timerObject.toString()+":00");
+            isPause = false;
+        }
+
+    }
+
+    private void editContent(){
+
+        if(timerObject>45 && timerObject<60 && isPause){
+            labelContentFive.setText(labelContentFour.getText());
+            labelContentFour.setText(labelContentThree.getText());
+            labelContentThree.setText(labelContentTwo.getText());
+            labelContentTwo.setText(labelContentOne.getText());
+            labelContentOne.setText(randomEvent.selectEventForPause());
+        }
+        else{
+            labelContentFive.setText(labelContentFour.getText());
+            labelContentFour.setText(labelContentThree.getText());
+            labelContentThree.setText(labelContentTwo.getText());
+            labelContentTwo.setText(labelContentOne.getText());
+            labelContentOne.setText(randomEvent.selectEvent());
         }
     }
 
     public void start(){
         timerNew.scheduleAtFixedRate(task,0,500);
     }
-
 }
 
