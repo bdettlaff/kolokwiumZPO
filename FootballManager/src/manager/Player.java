@@ -1,8 +1,12 @@
 package manager;
 
 public class Player {
-    private String firstName;
-    private String lastName;
+    String lastName;
+    String club;
 
+    public Player(String lastName, String club){
+        this.lastName = lastName;
+        this.club = club;
 
+    }
 }
