@@ -1,0 +1,7 @@
+InetAddress - klasa opisująca kompuer poprzez adres oraz nazwę
+Metody: 
+getHostName - zwraca nazwę hosta/domeny 
+getHostAddress - zwraca adres IP hosta
+getAdress - zwraca listę adresow z danego komputera (w formie tablicy obiektów)
+address - to jest obiekt, który (prawdopodobnie) ma z overridowany toString i wypisuje Nazwę komputer z 
+domeną i adres Ip
